@@ -71,9 +71,11 @@ var Timeline = exports.Timeline = function (_React$Component) {
     value: function componentWillMount() {
       var mediaWidthSmall = this.mergedConfig.mediaWidthSmall;
 
-      this.mqTwoSided = window.matchMedia('(min-width: ' + mediaWidthSmall + 'px)');
-      this.mqTwoSided.addListener(this.onTwoSidedChange);
-      this.onTwoSidedChange(this.mqTwoSided);
+      if (window && window.matchMedia) {
+        this.mqTwoSided = window.matchMedia('(min-width: ' + mediaWidthSmall + 'px)');
+        this.mqTwoSided.addListener(this.onTwoSidedChange);
+        this.onTwoSidedChange(this.mqTwoSided);
+      }
     }
   }, {
     key: 'componentWillUnmount',
@@ -102,7 +104,8 @@ var Timeline = exports.Timeline = function (_React$Component) {
         base: _defineProperty({
           textAlign: 'center',
           color: color,
-          overflowX: 'hidden'
+          overflowX: 'hidden',
+          overflowY: 'hidden'
         }, this.mqTwoSidedString, {
           marginBottom: twoSidedOverlap + 'px'
         })

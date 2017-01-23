@@ -1,19 +1,21 @@
 {
-  "name": "react-timeline",
+  "name": "react-dual-timeline",
   "version": "0.2.0",
   "description": "Timeline Component for React",
   "keywords": [
     "react",
     "timeline",
-    "component"
+    "component",
+    "dual",
+    "two-sided"
   ],
-  "repository": "https://github.com/ftes/react-timeline.git",
+  "repository": "https://github.com/ftes/react-dual-timeline.git",
   "author": "Fredrik Teschke",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ftes/react-timeline/issues"
+    "url": "https://github.com/ftes/react-dual-timeline/issues"
   },
-  "homepage": "https://github.com/ftes/react-timeline#readme",
+  "homepage": "https://github.com/ftes/react-dual-timeline#readme",
   "main": "dist",
   "scripts": {
     "build": "babel src --out-dir dist",
