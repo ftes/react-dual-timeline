@@ -51,8 +51,8 @@ export class Timeline extends React.Component {
       base: {
         textAlign: 'center',
         color: color,
-        overflowX: 'hidden',
-        overflowY: 'hidden',
+        //overflowX: 'hidden',
+        //overflowY: 'hidden',
         [this.mqTwoSidedString]: {
           marginBottom: twoSidedOverlap + 'px',
         }
