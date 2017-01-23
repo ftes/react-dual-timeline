@@ -26,9 +26,11 @@ export class Timeline extends React.Component {
 
   componentWillMount() {
     const { mediaWidthSmall } = this.mergedConfig
-    this.mqTwoSided = window.matchMedia(`(min-width: ${mediaWidthSmall}px)`)
-    this.mqTwoSided.addListener(this.onTwoSidedChange)
-    this.onTwoSidedChange(this.mqTwoSided)
+    if (window && window.matchMedia) {
+      this.mqTwoSided = window.matchMedia(`(min-width: ${mediaWidthSmall}px)`)
+      this.mqTwoSided.addListener(this.onTwoSidedChange)
+      this.onTwoSidedChange(this.mqTwoSided)
+    }
   }
 
   componentWillUnmount() {
@@ -50,6 +52,7 @@ export class Timeline extends React.Component {
         textAlign: 'center',
         color: color,
         overflowX: 'hidden',
+        overflowY: 'hidden',
         [this.mqTwoSidedString]: {
           marginBottom: twoSidedOverlap + 'px',
         }
