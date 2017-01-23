@@ -8,7 +8,7 @@ import Timeline from '../src/timeline'
 render(
   <StyleRoot>
     <Timeline activeColor='yellow'>
-      <div><h1>Entry 1</h1></div>
+      <div icon='a'><h1>Entry 1</h1></div>
       <div>
         <h1>Entry 2</h1>
         <ul>

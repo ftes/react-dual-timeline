@@ -18,10 +18,13 @@ render(
   <StyleRoot>
     <Timeline>
       <div>Arbitrary entry</div>
+      <div icon='x'>Arbitrary entry</div>
     </Timeline>
   </StyleRoot>
 )
 ```
+
+A custom icon can (optionally) be provided for each entry.
 
 ## Configuration
 [src/config.js](./src/config.js) holds the default configuration.
