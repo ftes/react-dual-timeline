@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ftes/react-timeline.svg?branch=master)](https://travis-ci.org/ftes/react-timeline)
+
 # React Timeline
 A react component for animated timelines.
 
