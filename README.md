@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/ftes/react-dual-timeline.svg?branch=master)](https://travis-ci.org/ftes/react-dual-timeline)
+[![npm version](https://badge.fury.io/js/react-dual-timeline.svg)](https://badge.fury.io/js/react-dual-timeline)
 
 # React Timeline
 A react component for animated timelines.
