@@ -45,52 +45,68 @@ var Timeline = exports.Timeline = function (_React$Component) {
 
     var _this = _possibleConstructorReturn(this, (Timeline.__proto__ || Object.getPrototypeOf(Timeline)).call(this, props));
 
-    _this.state = { vw: 0 };
-    _this.updateWidth = _this.updateWidth.bind(_this);
+    _this.state = { twoSided: true };
+    _this.onTwoSidedChange = _this.onTwoSidedChange.bind(_this);
+    _this.componentWillReceiveProps(props);
     return _this;
   }
 
+  /**
+   * Merge config with default only once (optimize)
+   */
+
+
   _createClass(Timeline, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(newProps) {
+      //eslint-disable-next-line no-unused-vars
+      var children = newProps.children,
+          config = _objectWithoutProperties(newProps, ['children']); // children are not config
+
+
+      this.mergedConfig = _extends({}, _config2.default, config);
+    }
+  }, {
     key: 'componentWillMount',
     value: function componentWillMount() {
-      this.updateWidth();
-      window.addEventListener('resize', this.updateWidth);
+      var mediaWidthSmall = this.mergedConfig.mediaWidthSmall;
+
+      this.mqTwoSided = window.matchMedia('(min-width: ' + mediaWidthSmall + 'px)');
+      this.mqTwoSided.addListener(this.onTwoSidedChange);
+      this.onTwoSidedChange(this.mqTwoSided);
     }
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
-      window.removeEventListener('resize', this.updateWidth);
+      this.mqTwoSided.removeEventListener(this.onTwoSidedChange);
     }
   }, {
-    key: 'updateWidth',
-    value: function updateWidth() {
-      this.setState({ vw: window.innerWidth });
+    key: 'onTwoSidedChange',
+    value: function onTwoSidedChange(mq) {
+      this.setState({ twoSided: mq.matches });
     }
   }, {
     key: 'render',
     value: function render() {
-      var _props = this.props,
-          children = _props.children,
-          config = _props.config,
-          props = _objectWithoutProperties(_props, ['children', 'config']);
+      var _this2 = this;
 
+      var children = this.props.children;
+      var _mergedConfig = this.mergedConfig,
+          color = _mergedConfig.color,
+          twoSidedOverlap = _mergedConfig.twoSidedOverlap;
+
+      var twoSided = this.state.twoSided;
       var i = 0;
-      var mergedConfig = _extends({}, _config2.default, config);
-
-      var mediaWidthSmall = mergedConfig.mediaWidthSmall,
-          twoSidedOverlap = mergedConfig.twoSidedOverlap;
-
 
       var styles = {
         base: _defineProperty({
           textAlign: 'center',
-          color: mergedConfig.color
-        }, '@media screen and (min-width: ' + mediaWidthSmall + 'px)', {
+          color: color,
+          overflowX: 'hidden'
+        }, this.mqTwoSidedString, {
           marginBottom: twoSidedOverlap + 'px'
         })
       };
-
-      var allOddOnSmall = this.state.vw <= mergedConfig.mediaWidthSmall;
 
       return _react2.default.createElement(
         'div',
@@ -98,8 +114,8 @@ var Timeline = exports.Timeline = function (_React$Component) {
         _react2.default.Children.map(children, function (c) {
           return _react2.default.createElement(
             _entry2.default,
-            _extends({ even: i++ % 2 === 0 && !allOddOnSmall, config: mergedConfig,
-              icon: c.props.icon }, props),
+            { even: i++ % 2 === 0 && twoSided, config: _this2.mergedConfig,
+              icon: c.props.icon },
             c
           );
         })
@@ -112,7 +128,36 @@ var Timeline = exports.Timeline = function (_React$Component) {
 
 Timeline.propTypes = {
   children: _react.PropTypes.node.isRequired,
-  config: _react.PropTypes.object
+
+  // global
+  paddingTop: _react.PropTypes.number,
+  mediaWidthMed: _react.PropTypes.number,
+  mediaWidthSmall: _react.PropTypes.number,
+  activeColor: _react.PropTypes.string,
+  color: _react.PropTypes.string,
+  twoSidedOverlap: _react.PropTypes.number,
+  animations: _react.PropTypes.bool,
+  addEvenPropToChildren: _react.PropTypes.bool,
+
+  // line
+  lineColor: _react.PropTypes.string,
+  circleWidth: _react.PropTypes.number,
+  paddingToItem: _react.PropTypes.number,
+  paddingToItemSmall: _react.PropTypes.number,
+  lineWidth: _react.PropTypes.number,
+
+  // triangle
+  triangleWidth: _react.PropTypes.number,
+  triangleHeight: _react.PropTypes.number,
+
+  // list item content
+  itemWidth: _react.PropTypes.number,
+  itemWidthMed: _react.PropTypes.number,
+  offsetHidden: _react.PropTypes.number,
+  triangleOffset: _react.PropTypes.number,
+  smallItemWidthPadding: _react.PropTypes.number,
+  itemPadding: _react.PropTypes.number,
+  evenItemOffset: _react.PropTypes.number
 };
 
 exports.default = (0, _radium2.default)(Timeline);

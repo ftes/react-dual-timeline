@@ -19,7 +19,7 @@
     "build": "babel src --out-dir dist",
     "dev": "babel src --out-dir dist --watch",
     "build-example": "webpack -p --config=webpack.prod.config.js",
-    "dev-example": "webpack-dev-server --hot --inline",
+    "dev-example": "webpack-dev-server --host 0.0.0.0 --hot --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {

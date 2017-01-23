@@ -7,51 +7,60 @@ import defaultConfig from './config'
 export class Timeline extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { vw: 0 }
-    this.updateWidth = this.updateWidth.bind(this)
+    this.state = { twoSided: true }
+    this.onTwoSidedChange = this.onTwoSidedChange.bind(this)
+    this.componentWillReceiveProps(props)
   }
 
-  componentWillMount() {
-    this.updateWidth()
-    window.addEventListener('resize', this.updateWidth)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.updateWidth)
-  }
-
-  updateWidth() {
-    this.setState({ vw: window.innerWidth })
-  }
-
-  render() {
-    const { children, config, ...props } = this.props
-    
-    let i = 0
-    const mergedConfig = {
+  /**
+   * Merge config with default only once (optimize)
+   */
+  componentWillReceiveProps(newProps) {
+    //eslint-disable-next-line no-unused-vars
+    const { children, ...config } = newProps // children are not config
+    this.mergedConfig = {
       ...defaultConfig,
       ...config,
     }
+  }
 
-    const { mediaWidthSmall, twoSidedOverlap } = mergedConfig
+  componentWillMount() {
+    const { mediaWidthSmall } = this.mergedConfig
+    this.mqTwoSided = window.matchMedia(`(min-width: ${mediaWidthSmall}px)`)
+    this.mqTwoSided.addListener(this.onTwoSidedChange)
+    this.onTwoSidedChange(this.mqTwoSided)
+  }
+
+  componentWillUnmount() {
+    this.mqTwoSided.removeEventListener(this.onTwoSidedChange)
+  }
+
+  onTwoSidedChange(mq) {
+    this.setState({ twoSided: mq.matches })
+  }
+
+  render() {
+    const { children } = this.props
+    const { color, twoSidedOverlap } = this.mergedConfig
+    const twoSided = this.state.twoSided
+    let i = 0
 
     const styles = {
       base: {
         textAlign: 'center',
-        color: mergedConfig.color,
-        [`@media screen and (min-width: ${mediaWidthSmall}px)`]: {
+        color: color,
+        overflowX: 'hidden',
+        [this.mqTwoSidedString]: {
           marginBottom: twoSidedOverlap + 'px',
         }
       }
     }
 
-    const allOddOnSmall = this.state.vw <= mergedConfig.mediaWidthSmall
-
     return (
       <div style={[styles.base]}>
         {React.Children.map(children, c =>
-          <Entry even={i++ % 2 === 0 && !allOddOnSmall} config={mergedConfig}
-            icon={c.props.icon} {...props}>
+          <Entry even={i++ % 2 === 0 && twoSided} config={this.mergedConfig}
+            icon={c.props.icon}>
             {c}
           </Entry>
         )}
@@ -62,7 +71,36 @@ export class Timeline extends React.Component {
 
 Timeline.propTypes = {
   children: PropTypes.node.isRequired,
-  config: PropTypes.object,
+
+  // global
+  paddingTop: PropTypes.number,
+  mediaWidthMed: PropTypes.number,
+  mediaWidthSmall: PropTypes.number,
+  activeColor: PropTypes.string,
+  color: PropTypes.string,
+  twoSidedOverlap: PropTypes.number,
+  animations: PropTypes.bool,
+  addEvenPropToChildren: PropTypes.bool,
+
+  // line
+  lineColor: PropTypes.string,
+  circleWidth: PropTypes.number,
+  paddingToItem: PropTypes.number,
+  paddingToItemSmall: PropTypes.number,
+  lineWidth: PropTypes.number,
+
+  // triangle
+  triangleWidth: PropTypes.number,
+  triangleHeight: PropTypes.number,
+
+  // list item content
+  itemWidth: PropTypes.number,
+  itemWidthMed: PropTypes.number,
+  offsetHidden: PropTypes.number,
+  triangleOffset: PropTypes.number,
+  smallItemWidthPadding: PropTypes.number,
+  itemPadding: PropTypes.number,
+  evenItemOffset: PropTypes.number,
 }
 
 export default Radium(Timeline)
