@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import Timeline from './timeline'
+import Timeline from '../src'
 
 describe('Timeline', () => {
   it('passes smoke test', () => {
