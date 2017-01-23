@@ -50,9 +50,9 @@ export class Timeline extends React.Component {
     const styles = {
       base: {
         textAlign: 'center',
+        paddingBottom: twoSided && twoSidedOverlap + 'px',
         color: color,
-        //overflowX: 'hidden',
-        //overflowY: 'hidden',
+        overflow: 'hidden',
         [this.mqTwoSidedString]: {
           marginBottom: twoSidedOverlap + 'px',
         }

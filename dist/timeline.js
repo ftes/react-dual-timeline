@@ -103,7 +103,9 @@ var Timeline = exports.Timeline = function (_React$Component) {
       var styles = {
         base: _defineProperty({
           textAlign: 'center',
-          color: color
+          paddingBottom: twoSided && twoSidedOverlap + 'px',
+          color: color,
+          overflow: 'hidden'
         }, this.mqTwoSidedString, {
           marginBottom: twoSidedOverlap + 'px'
         })

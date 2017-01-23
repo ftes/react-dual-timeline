@@ -22,7 +22,8 @@
     "dev": "babel src --out-dir dist --watch",
     "build-example": "webpack -p --config=webpack.prod.config.js",
     "dev-example": "webpack-dev-server --host 0.0.0.0 --hot --inline",
-    "test": "jest"
+    "test": "jest",
+    "start": "npm run dev-example"
   },
   "devDependencies": {
     "babel-cli": "^6.6.5",
