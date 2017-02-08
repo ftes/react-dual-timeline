@@ -81,7 +81,7 @@ var Timeline = exports.Timeline = function (_React$Component) {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       if (this.mqTwoSided) {
-        this.mqTwoSided.removeEventListener(this.onTwoSidedChange);
+        this.mqTwoSided.removeListener(this.onTwoSidedChange);
       }
     }
   }, {

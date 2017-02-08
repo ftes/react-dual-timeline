@@ -35,7 +35,7 @@ export class Timeline extends React.Component {
 
   componentWillUnmount() {
     if (this.mqTwoSided) {
-      this.mqTwoSided.removeEventListener(this.onTwoSidedChange)
+      this.mqTwoSided.removeListener(this.onTwoSidedChange)
     }
   }
 
