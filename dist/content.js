@@ -59,7 +59,7 @@ var Content = exports.Content = function (_React$Component) {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       window.removeEventListener('scroll', this.onScroll);
-      window.addEventListener('resize', this.onScroll);
+      window.removeEventListener('resize', this.onScroll);
     }
   }, {
     key: 'onScroll',
