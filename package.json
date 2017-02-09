@@ -19,6 +19,7 @@
   "main": "dist",
   "scripts": {
     "build": "babel src --out-dir dist",
+    "patch": "npm run build && npm version PATCH && npm publish && git push",
     "dev": "babel src --out-dir dist --watch",
     "build-example": "webpack -p --config=webpack.prod.config.js",
     "dev-example": "webpack-dev-server --host 0.0.0.0 --hot --inline",
