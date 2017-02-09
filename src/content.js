@@ -26,7 +26,7 @@ export class Content extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll)
-    window.addEventListener('resize', this.onScroll)
+    window.removeEventListener('resize', this.onScroll)
   }
 
   onScroll() {
