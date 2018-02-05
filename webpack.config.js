@@ -1,10 +1,10 @@
 'use strict'
 
+var webpack = require('webpack')
+
 module.exports = {
 
   entry: ['./example/index.js'],
-
-  debug: true,
 
   devtool: 'inline-source-map',
 
@@ -23,6 +23,12 @@ module.exports = {
         presets: ['react', 'es2015']
       }
     }]
-  }
+  },
+
+  plugins: [
+    new webpack.LoaderOptionsPlugin({
+      debug: false
+    })
+  ]
 
 }

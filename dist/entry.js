@@ -13,6 +13,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _radium = require('radium');
 
 var _radium2 = _interopRequireDefault(_radium);
@@ -146,10 +150,10 @@ var Entry = exports.Entry = function (_React$Component) {
 }(_react2.default.Component);
 
 Entry.propTypes = {
-  children: _react.PropTypes.node.isRequired,
-  even: _react.PropTypes.bool.isRequired,
-  config: _react.PropTypes.object.isRequired,
-  icon: _react.PropTypes.node
+  children: _propTypes2.default.node.isRequired,
+  even: _propTypes2.default.bool.isRequired,
+  config: _propTypes2.default.object.isRequired,
+  icon: _propTypes2.default.node
 };
 
 exports.default = (0, _radium2.default)(Entry);

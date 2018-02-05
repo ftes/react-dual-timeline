@@ -13,6 +13,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _radium = require('radium');
 
 var _radium2 = _interopRequireDefault(_radium);
@@ -132,37 +136,37 @@ var Timeline = exports.Timeline = function (_React$Component) {
 }(_react2.default.Component);
 
 Timeline.propTypes = {
-  children: _react.PropTypes.node.isRequired,
+  children: _propTypes2.default.node.isRequired,
 
   // global
-  paddingTop: _react.PropTypes.number,
-  mediaWidthMed: _react.PropTypes.number,
-  mediaWidthSmall: _react.PropTypes.number,
-  activeColor: _react.PropTypes.string,
-  color: _react.PropTypes.string,
-  twoSidedOverlap: _react.PropTypes.number,
-  animations: _react.PropTypes.bool,
-  addEvenPropToChildren: _react.PropTypes.bool,
+  paddingTop: _propTypes2.default.number,
+  mediaWidthMed: _propTypes2.default.number,
+  mediaWidthSmall: _propTypes2.default.number,
+  activeColor: _propTypes2.default.string,
+  color: _propTypes2.default.string,
+  twoSidedOverlap: _propTypes2.default.number,
+  animations: _propTypes2.default.bool,
+  addEvenPropToChildren: _propTypes2.default.bool,
 
   // line
-  lineColor: _react.PropTypes.string,
-  circleWidth: _react.PropTypes.number,
-  paddingToItem: _react.PropTypes.number,
-  paddingToItemSmall: _react.PropTypes.number,
-  lineWidth: _react.PropTypes.number,
+  lineColor: _propTypes2.default.string,
+  circleWidth: _propTypes2.default.number,
+  paddingToItem: _propTypes2.default.number,
+  paddingToItemSmall: _propTypes2.default.number,
+  lineWidth: _propTypes2.default.number,
 
   // triangle
-  triangleWidth: _react.PropTypes.number,
-  triangleHeight: _react.PropTypes.number,
+  triangleWidth: _propTypes2.default.number,
+  triangleHeight: _propTypes2.default.number,
 
   // list item content
-  itemWidth: _react.PropTypes.number,
-  itemWidthMed: _react.PropTypes.number,
-  offsetHidden: _react.PropTypes.number,
-  triangleOffset: _react.PropTypes.number,
-  smallItemWidthPadding: _react.PropTypes.number,
-  itemPadding: _react.PropTypes.number,
-  evenItemOffset: _react.PropTypes.number
+  itemWidth: _propTypes2.default.number,
+  itemWidthMed: _propTypes2.default.number,
+  offsetHidden: _propTypes2.default.number,
+  triangleOffset: _propTypes2.default.number,
+  smallItemWidthPadding: _propTypes2.default.number,
+  itemPadding: _propTypes2.default.number,
+  evenItemOffset: _propTypes2.default.number
 };
 
 exports.default = (0, _radium2.default)(Timeline);

@@ -6,8 +6,6 @@ module.exports = {
 
   entry: ['./example/index.js'],
 
-  debug: false,
-
   output: {
     filename: './example/bundle.js',
     pathinfo: true
@@ -36,6 +34,9 @@ module.exports = {
       compress: { // hide warnings (unused var, always true etc.)
         warnings: false
       }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      debug: false
     })
   ]
 

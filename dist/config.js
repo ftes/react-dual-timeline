@@ -32,6 +32,7 @@ var config = {
   triangleOffset: 7,
   smallItemWidthPadding: 50,
   itemPadding: 16,
-  evenItemOffset: 0 };
+  evenItemOffset: 0 // important when using bootstrap.css
+};
 
 exports.default = config;
