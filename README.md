@@ -36,27 +36,50 @@ Alternative values can be passed to the `<Timeline>` component,
 e.g. `<Timeline animations={false}` to disable animations (far more efficient,
 as otherwise boundingRect of every entry is checked on every scroll event).
 
+### Global
+
 name                  | default value            | description
 ----------------------|--------------------------|-----------------------
-paddingTop            | 50
+totalWidth            | detected screen width | The total width of the view
 mediaWidthMed         | 900
 mediaWidthSmall       | 700
 activeColor           | #F45B69
 color                 | black
-twoSidedOverlap       | 80 | negative overlap between items if two-sided
 animations            | true
 addEvenPropToChildren | false
-lineColor             | #FFF
-circleWidth           | 30
-paddingToItem         | 30
-paddingToItemSmall    | 20
-lineWidth             | 5
+
+
+### Vertical Line
+name                  | default value            | description
+----------------------|--------------------------|-----------------------
+lineColor             | #FFF | Color of the vertical line
+lineWidth             | 5 | Width of the vertical line
+paddingToItem         | 30 | Space to the item box
+paddingToItemSmall    | 20 | Space to the item box
+
+### Circles
+name                  | default value            | description
+----------------------|--------------------------|-----------------------
+circleColor           | #F45B69 | Color of the circles
+circleWidth           | 30 | Width of the circles
+
+### Triangle
+name                  | default value            | description
+----------------------|--------------------------|-----------------------
+triangleColor         | #F45B69 | Color of the triangle
 triangleWidth         | 16
 triangleHeight        | 8
+trianglePosition      | top | Position of the triangle, either top or bottom
+triangleOffset        | 15
+
+### List Item
+name                  | default value            | description
+----------------------|--------------------------|-----------------------
 itemWidth             | 350
 itemWidthMed          | 250
-offsetHidden          | 200
-triangleOffset        | 7
+offsetHidden          | 200 | The distance the item is moving in (if animations is true). The higher the faster it moves in
+twoSidedOverlap       | 80 | negative overlap between items if two-sided
+paddingTop            | 50 | Space to the top applied to each list item
 smallItemWidthPadding | 50
-itemPadding           | 16
+itemPadding           | 16 | The space of the item contents to the edge of the item box
 evenItemOffset        | 0 | important when using bootstrap.css
