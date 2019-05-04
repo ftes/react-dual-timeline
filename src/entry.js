@@ -29,6 +29,7 @@ export class Entry extends React.Component {
         width: lineWidth + 'px',
         margin: `0 ${totalWidth / 2}px -${twoSidedOverlap}px ${totalWidth / 2}px`,
         paddingTop: paddingTop + 'px',
+        paddingBottom: '5px',
         background: lineColor,
         [`@media screen and (max-width: ${mediaWidthSmall}px)`]: {
           margin: '0 auto 0 ${circleWidth / 2 + 5}px',
