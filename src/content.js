@@ -40,26 +40,27 @@ export class Content extends React.Component {
 
     const { circleWidth, mediaWidthMed, paddingToItem, paddingToItemSmall,
       itemWidth, itemWidthMed, animations, lineWidth, evenItemOffset,
-      offsetHidden, triangleWidth, triangleOffset, triangleHeight,
-      activeColor, mediaWidthSmall, smallItemWidthPadding, itemPadding }
+      offsetHidden, trianglePosition, triangleOffset, triangleWidth, triangleHeight,
+      activeColor, triangleColor, mediaWidthSmall, smallItemWidthPadding, itemPadding }
       = config
 
-    const offsetEven = circleWidth + paddingToItem + triangleWidth - lineWidth
+    const offsetEven = circleWidth/2 + paddingToItem + triangleWidth - lineWidth
       + evenItemOffset
     const offsetEvenNml = offsetEven + itemWidth
     const offsetEvenMed = offsetEven + itemWidthMed
+		const offsetOddNml = circleWidth / 2 + paddingToItem + triangleWidth;
 
     const triangleLeft = {
       right: `-${triangleWidth - 1}px`,
       borderWidth:
         `${triangleHeight}px 0 ${triangleHeight}px ${triangleWidth}px`,
-      borderColor: `transparent transparent transparent ${activeColor}`,
+      borderColor: `transparent transparent transparent ${triangleColor}`,
     }
     const triangleRight = {
       left: `-${triangleWidth - 1}px`,
       borderWidth:
         `${triangleHeight}px ${triangleWidth}px ${triangleHeight}px 0`,
-      borderColor: `transparent ${activeColor} transparent transparent`,
+      borderColor: `transparent ${triangleColor} transparent transparent`,
     }
 
     const mediaMed = `@media screen and (min-width: ${mediaWidthSmall}px)
@@ -102,20 +103,21 @@ export class Content extends React.Component {
           left: `-${offsetEvenMed}px`,
         },
         [mediaSmall]: {
-          left: paddingToItemSmall + triangleWidth + 'px',
+          left: circleWidth/2 + paddingToItemSmall + triangleWidth + 'px',
         },
       },
       odd: {
-        left: paddingToItem + triangleWidth + 'px',
+        left: offsetOddNml + 'px',
         transform: animations ? `translate3d(${offsetHidden}px,0,0)` : null,
         [mediaSmall]: {
-          left: paddingToItemSmall + triangleWidth + 'px',
+          left: circleWidth/2 + paddingToItemSmall + triangleWidth + 'px',
         },
       },
       triangle: {
         base: {
           position: 'absolute',
-          bottom: triangleOffset + 'px',
+					top: `${trianglePosition == 'top' ? `${triangleOffset}px` : 'auto'}`,
+					bottom: `${trianglePosition == 'bottom' ? `${triangleOffset}px` : 'auto'}`,
           width: '0',
           height: '0',
           borderStyle: 'solid',
