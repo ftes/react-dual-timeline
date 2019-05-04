@@ -1,6 +1,6 @@
 const config = {
   // global
-	totalWidth: window.innerWidth,
+  totalWidth: window.innerWidth,
   paddingTop: 50,
   mediaWidthMed: 900,
   mediaWidthSmall: 700,
@@ -17,15 +17,15 @@ const config = {
   paddingToItemSmall: 20,
 
   // circle
-	circleColor: '#ff0',
+  circleColor: '#ff0',
   circleWidth: 30,
   
   // triangle
-	triangleColor: '#fff',
+  triangleColor: '#fff',
   triangleWidth: 16,
   triangleHeight: 8,
-	trianglePosition: 'top', // top or bottom
-	triangleOffset: 15,
+  trianglePosition: 'top', // top or bottom
+  triangleOffset: 15,
 
   // list item content
   itemWidth: 350,
