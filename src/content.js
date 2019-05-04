@@ -10,10 +10,13 @@ export class Content extends React.Component {
 
   areChildrenInView() {
     const rect = this.children.getBoundingClientRect()
-    const vwHeight = window.innerHeight || document.documentElement.clientHeight
+    let vwHeight = window.innerHeight || document.documentElement.clientHeight
+	let viewTop = window.pageYOffset > vwHeight ? vwHeight : vwHeight - this.props.config.animationScrollDelay
+	let viewBottom = window.pageYOffset > this.props.config.animationScrollDelay ? this.props.config.animationScrollDelay : 0
+	
     return (
-      ( rect.bottom >= 0 && rect.bottom <= vwHeight ) ||
-      ( rect.top >= 0 && rect.top <= vwHeight )
+      ( rect.bottom >= viewBottom && rect.bottom <= viewTop ) ||
+      ( rect.top >= viewBottom && rect.top <= viewTop )
     )
   }
 
