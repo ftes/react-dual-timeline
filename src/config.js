@@ -14,6 +14,8 @@ const config = {
   lineWidth: 5,
   paddingToItem: 30,
   paddingToItemSmall: 20,
+  endNodeType: 'circle', // none, square or circle
+  endNodeSize: 40,
 
   // circle
   circleColor: '#F45B69',
