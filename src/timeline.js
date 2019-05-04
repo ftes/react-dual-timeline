@@ -46,7 +46,7 @@ export class Timeline extends React.Component {
 
   render() {
     const { children } = this.props
-    const { color, twoSidedOverlap } = this.mergedConfig
+    const { totalWidth, color, twoSidedOverlap, lineColor, lineWidth, endNodeType, endNodeSize } = this.mergedConfig
     const twoSided = this.state.twoSided
     let i = 0
 
@@ -59,10 +59,24 @@ export class Timeline extends React.Component {
         [this.mqTwoSidedString]: {
           marginBottom: twoSidedOverlap + 'px',
         }
-      }
+      },
+	  endNode: {
+		  base: {
+        height: `${endNodeSize}px`,
+        width: `${endNodeSize}px`,
+        background: lineColor,
+        marginLeft: `${totalWidth/2 - endNodeSize/2 + lineWidth/2}px`,
+		  },
+		  square: {
+		  },
+		  circle: {
+			  borderRadius: `${endNodeSize / 2}px`,
+		  }
+	  },
     }
 
     return (
+	  <div>
       <div style={[styles.base]}>
         {React.Children.map(children, c =>
           <Entry even={i++ % 2 === 0 && twoSided} config={this.mergedConfig}
@@ -71,6 +85,8 @@ export class Timeline extends React.Component {
           </Entry>
         )}
       </div>
+      {endNodeType != 'none' && <div style={[styles.endNode.base, styles.endNode[endNodeType]]} />}
+	  </div>
     )
   }
 }
@@ -94,6 +110,8 @@ Timeline.propTypes = {
   lineWidth: PropTypes.number,
   paddingToItem: PropTypes.number,
   paddingToItemSmall: PropTypes.number,
+  endNodeType: PropTypes.oneOf(['none', 'circle', 'square']),
+  endNodeSize: PropTypes.number,
 
   // circle
   circleColor: PropTypes.string,
