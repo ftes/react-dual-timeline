@@ -46,6 +46,7 @@ mediaWidthSmall       | 700
 activeColor           | #F45B69
 color                 | black
 animations            | true
+animationScrollDelay  | 100 | Delays triggering the animation when scrolling up or down
 addEvenPropToChildren | false
 
 
