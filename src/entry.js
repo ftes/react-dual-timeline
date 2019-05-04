@@ -19,7 +19,7 @@ export class Entry extends React.Component {
     const { children, icon, ...props } = this.props
     const { inView } = this.state
 
-    const { lineWidth, circleWidth, paddingTop, lineColor, activeColor,
+    const { totalWidth, lineWidth, circleWidth, triangleHeight, trianglePosition, triangleOffset, paddingTop, lineColor, circleColor, activeColor,
       mediaWidthSmall, twoSidedOverlap, animations } = this.props.config
 
     const styles = {
@@ -27,11 +27,11 @@ export class Entry extends React.Component {
         listStyleType: 'none',
         position: 'relative', // base for map position
         width: lineWidth + 'px',
-        margin: `0 auto -${twoSidedOverlap}px auto`,
+        margin: `0 ${totalWidth / 2}px -${twoSidedOverlap}px ${totalWidth / 2}px`,
         paddingTop: paddingTop + 'px',
         background: lineColor,
         [`@media screen and (max-width: ${mediaWidthSmall}px)`]: {
-          margin: '0 auto 0 20px',
+          margin: '0 auto 0 ${circleWidth / 2 + 5}px',
         },
         '@media print': {
           margin: 0,
@@ -42,12 +42,24 @@ export class Entry extends React.Component {
       circle: {
         base: {
           position: 'absolute',
-          bottom: '0',
+					top: `${
+						trianglePosition == 'top'
+							? `${paddingTop +
+									triangleOffset -
+									circleWidth / 2 +
+									triangleHeight}px`
+							: 'auto'
+					}`,
+					bottom: `${
+						trianglePosition == 'bottom'
+							? `${0 + triangleOffset - circleWidth / 2 + triangleHeight}px`
+							: 'auto'
+					}`,
           transform: 'translateX(-50%)',
           width: circleWidth + 'px',
           height: circleWidth + 'px',
           borderRadius: '50%',
-          background: lineColor,
+          background: circleColor,
           transition: animations ? 'background .5s ease-in-out' : null,
           zIndex: 1,
         },
@@ -61,7 +73,7 @@ export class Entry extends React.Component {
           }
         },
         inView: {
-          background: activeColor,
+          background: circleColor,
         }
       },
     }
