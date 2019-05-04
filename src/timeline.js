@@ -79,6 +79,7 @@ Timeline.propTypes = {
   children: PropTypes.node.isRequired,
 
   // global
+  totalWidth: PropTypes.number,
   paddingTop: PropTypes.number,
   mediaWidthMed: PropTypes.number,
   mediaWidthSmall: PropTypes.number,
@@ -90,20 +91,25 @@ Timeline.propTypes = {
 
   // line
   lineColor: PropTypes.string,
-  circleWidth: PropTypes.number,
+  lineWidth: PropTypes.number,
   paddingToItem: PropTypes.number,
   paddingToItemSmall: PropTypes.number,
-  lineWidth: PropTypes.number,
 
+  // circle
+  circleColor: PropTypes.string,
+  circleWidth: PropTypes.number,
+  
   // triangle
+  triangleColor: PropTypes.string,
   triangleWidth: PropTypes.number,
   triangleHeight: PropTypes.number,
+  trianglePosition: PropTypes.oneOf(['top', 'bottom']),
+  triangleOffset: PropTypes.number,
 
   // list item content
   itemWidth: PropTypes.number,
   itemWidthMed: PropTypes.number,
   offsetHidden: PropTypes.number,
-  triangleOffset: PropTypes.number,
   smallItemWidthPadding: PropTypes.number,
   itemPadding: PropTypes.number,
   evenItemOffset: PropTypes.number,
