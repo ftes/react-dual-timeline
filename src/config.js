@@ -17,11 +17,11 @@ const config = {
   paddingToItemSmall: 20,
 
   // circle
-  circleColor: '#ff0',
+  circleColor: '#F45B69',
   circleWidth: 30,
   
   // triangle
-  triangleColor: '#fff',
+  triangleColor: '#F45B69',
   triangleWidth: 16,
   triangleHeight: 8,
   trianglePosition: 'top', // top or bottom
