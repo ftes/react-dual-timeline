@@ -1,3 +1,5 @@
+**Deprecated. Consider switching to [react-vertical-timeline-component](https://www.npmjs.com/package/react-vertical-timeline-component) or using [vanilla CSS](https://codepen.io/savalazic/pen/QKwERN/).**
+
 [![Build Status](https://travis-ci.org/ftes/react-dual-timeline.svg?branch=master)](https://travis-ci.org/ftes/react-dual-timeline)
 [![npm version](https://badge.fury.io/js/react-dual-timeline.svg)](https://www.npmjs.com/package/react-dual-timeline)
 
